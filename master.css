@@ -89,6 +89,13 @@ main {
         figure {
             
             border-radius: 100%;
+            border: 8px solid rgba(18, 143, 216, 0.938);
+            height: 200px;
+            width: 200px;
+        }
+        figure.figure {
+            
+            border-radius: 100%;
             border: 8px solid rgba(42, 230, 36, 0.938);
             height: 200px;
             width: 200px;
@@ -125,7 +132,7 @@ main {
         }
     }
 
-    menu {
+    menu.piojo {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -141,7 +148,7 @@ main {
             width: 220px;
             transition: all 0.2s ease-in;
             span {
-               background-color: rgba(1, 228, 1, 0.938); 
+               background-color: rgba(18, 143, 216, 0.938); 
                border: 2px solid #fff9;
                border-radius: 50%;
                color: rgba(250, 250, 250, 0.6);
@@ -159,7 +166,39 @@ main {
         }
     }
 }
-
+menu.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.6rem;
+    a:is(:link, :visited) {
+        background-color: #fff9;
+        border-radius: 25px;
+        color: #220038;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        width: 220px;
+        transition: all 0.2s ease-in;
+        span {
+           background-color: rgba(1, 228, 1, 0.938); 
+           border: 2px solid #fff9;
+           border-radius: 50%;
+           color: rgba(250, 250, 250, 0.6);
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 40px;
+           transition: all 0.4s ease-in;
+           width: 40px;
+        }
+        &:hover span {
+           border-radius: 50px;
+           width: 60px;
+        }
+    }
+}
 /* - - - - - - - - - - - - - */
 /* M A I N   M E N U */
 /* - - - - - - - - - - - - - */

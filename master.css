@@ -25,7 +25,7 @@ html {
     list-style: none;
   }
   
-  img {
+  img.logo {
     height: 185px;
     width: 185px; 
     border-radius: 50%;
@@ -128,7 +128,7 @@ main {
         border-radius: 6px;
         padding: 1rem;
         min-height: 30dvh;
-        width: 400px;
+        width: 460px;
         background-color: #0009;
         h3 {
             font-size: 1.6rem;

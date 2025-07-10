@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego de Memoria con jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    #tablero {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      gap: 15px;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    .carta {
+      background-color: #4CAF50;
+      color: white;
+      font-size: 30px;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .revelada {
+      background-color: #FFD700;
+      color: black;
+      cursor: default;
+    }
+
+    #mensaje {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #0b7dda;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Juego de Memoria - jQuery</h1>
+  <div id="tablero"></div>
+  <p id="mensaje"></p>
+  <button id="reiniciar">Reiniciar Juego</button>
+
+  <script>
+    const simbolos = ["🍎", "🍌", "🍓", "🍇", "🍉", "🥝", "🍍", "🍒"];
+    let cartas = [];
+    let carta1 = null;
+    let carta2 = null;
+    let bloqueo = false;
+    let parejas = 0;
+
+    function iniciarJuego() {
+      $("#tablero").empty();
+      $("#mensaje").text("");
+      cartas = [...simbolos, ...simbolos];
+      cartas.sort(() => 0.5 - Math.random());
+      carta1 = null;
+      carta2 = null;
+      bloqueo = false;
+      parejas = 0;
+
+      for (let i = 0; i < cartas.length; i++) {
+        const carta = $("<div class='carta'>?</div>");
+        carta.data("simbolo", cartas[i]);
+        carta.data("index", i);
+        $("#tablero").append(carta);
+      }
+    }
+
+    function revelarCarta($carta) {
+      if (bloqueo || $carta.hasClass("revelada")) return;
+
+      $carta.text($carta.data("simbolo"));
+
+      if (!carta1) {
+        carta1 = $carta;
+      } else if (!$carta.is(carta1)) {
+        carta2 = $carta;
+        verificarPareja();
+      }
+    }
+
+    function verificarPareja() {
+      bloqueo = true;
+
+      if (carta1.data("simbolo") === carta2.data("simbolo")) {
+        carta1.addClass("revelada");
+        carta2.addClass("revelada");
+        parejas++;
+
+        if (parejas === simbolos.length) {
+          $("#mensaje").text("🎉 ¡Has encontrado todas las parejas!");
+        }
+
+        resetear();
+      } else {
+        setTimeout(() => {
+          carta1.text("?");
+          carta2.text("?");
+          resetear();
+        }, 800);
+      }
+    }
+
+    function resetear() {
+      carta1 = null;
+      carta2 = null;
+      bloqueo = false;
+    }
+
+    $(document).on("click", ".carta", function () {
+      revelarCarta($(this));
+    });
+
+    $("#reiniciar").click(function () {
+      iniciarJuego();
+    });
+
+    $(document).ready(function () {
+      iniciarJuego();
+    });
+  </script>
+
+</body>
+</html>

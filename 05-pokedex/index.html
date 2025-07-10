@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokedex jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f8e8ff, #e0f7fa);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff6f61, #fbc02d);
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: white;
+      text-shadow: 2px 2px #2a75bb;
+    }
+
+    select {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    #pokemones {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+      background-color: rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #ffffff, #e3f2fd);
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      border: 4px solid #4fc3f7;
+    }
+
+    .modal-content img {
+      width: 140px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .modal-content img:hover {
+      transform: scale(1.15);
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #999;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #e53935;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Pokedex jQuery</h1>
+    <select id="generacion">
+      <option value="1">Generación I</option>
+      <option value="2">Generación II</option>
+      <option value="3">Generación III</option>
+    </select>
+  </header>
+
+  <main id="pokemones"></main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="detalle"></div>
+    </div>
+  </div>
+
+  <script>
+    const generaciones = {
+      1: [1, 151],
+      2: [152, 251],
+      3: [252, 386]
+    };
+
+    function cargarPokemones(gen) {
+      let [inicio, fin] = generaciones[gen];
+      $("#pokemones").html("Cargando...");
+
+      let promesas = [];
+      for (let i = inicio; i <= fin; i++) {
+        let promesa = $.getJSON(`https://pokeapi.co/api/v2/pokemon/${i}`);
+        promesas.push(promesa);
+      }
+
+      Promise.all(promesas).then(function (datos) {
+        $("#pokemones").html("");
+        datos.forEach(function (p) {
+          const tipos = p.types.map(t => t.type.name).join(", ");
+          const nombre = p.name.charAt(0).toUpperCase() + p.name.slice(1);
+          const tarjeta = `
+            <div class="card" data-id="${p.id}">
+              <img src="${p.sprites.front_default}" alt="${nombre}">
+              <h3>${nombre}</h3>
+              <p>#${p.id}</p>
+              <p>${tipos}</p>
+            </div>
+          `;
+          $("#pokemones").append(tarjeta);
+        });
+      });
+    }
+
+    function mostrarDetalle(id) {
+      $.getJSON(`https://pokeapi.co/api/v2/pokemon/${id}`, function(p) {
+        const nombre = p.name.toUpperCase();
+        const imagen = p.sprites.other["official-artwork"].front_default;
+        const detalle = `
+          <h2>${nombre}</h2>
+          <img src="${imagen}" alt="${nombre}">
+          <p><strong>HP:</strong> ${p.stats[0].base_stat}</p>
+          <p><strong>Ataque:</strong> ${p.stats[1].base_stat}</p>
+          <p><strong>Defensa:</strong> ${p.stats[2].base_stat}</p>
+        `;
+        $("#detalle").html(detalle);
+        $("#modal").removeClass("hidden");
+      });
+    }
+
+    $(document).ready(function () {
+      cargarPokemones(1); // Carga inicial
+
+      $("#generacion").on("change", function () {
+        let gen = $(this).val();
+        cargarPokemones(gen);
+      });
+
+      $("#pokemones").on("click", ".card", function () {
+        let id = $(this).data("id");
+        mostrarDetalle(id);
+      });
+
+      $(".close").on("click", function () {
+        $("#modal").addClass("hidden");
+      });
+    });
+  </script>
+</body>
+</html>

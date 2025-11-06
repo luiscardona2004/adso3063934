@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Pet extends Model
@@ -25,4 +25,11 @@ class Pet extends Model
         'active',
         'status',
     ];
+
+    // relationships 
+    // pet hasOne adoption 
+
+    public function adoption(){
+        return $this->hasOne(Adoption::class); 
+    }
 }

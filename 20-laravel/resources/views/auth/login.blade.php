@@ -1,55 +1,7 @@
-{{-- <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout> --}}
-
 @extends('layouts.home')
 @section('title', 'Login: Larapets 🐶')
 @section('content')
-    <section class="bg-[#0004] text-white rounded-lg w-96 p-8 flex flex-col gap-4 items-center justify-center">
+    <section class="bg-[#0007] text-white rounded-lg w-96 p-8 flex flex-col gap-4 items-center justify-center">
         <h1 class="flex gap-4 justify-center items-center text-4xl">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256">
                 <path
@@ -58,36 +10,41 @@
             </svg>
             Login
         </h1>
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+        <div class="divider divider-neutral"></div>
 
-            <div class="card w-full max-w-sm">
-                <form method="POST" action="{{ route('login') }}" class="card-body">
-                    @csrf
-                    <label class="label ">Email</label>
-                    <input type="text" name="email" class="input bg-[#0006]" required placeholder="Email" value="{{ old('email') }}" />
-                    @error('email')
-                        <small class="text-error text-sm mt-1">{{ $message }}</small>
-                    @enderror
 
-                    <label class="label">Password</label>
-                    <input type="password"  class="input bg-[#0006]" name="password" placeholder="Password" />
-                    @error('password')
-                        <small class="text-error text-sm mt-1">{{ $message }}</small>
-                    @enderror
+        <div class="card w-full max-w-sm ">
+            <form method="POST" action="{{ route('login') }}" class="card-body ">
+                @csrf
+                <label class="label ">Email</label>
+                <input type="text" name="email" class="input bg-[#0006] w-full mt-1 outline-0" required
+                    placeholder="Email" />
+                @error('email')
+                    <small class="badge badge-outline badge-error w-full mt-1">{{ $message }}</small>
+                @enderror
 
-                    <button class="btn btn-outline hover:bg-[#fff6] hover:text-white mt-4">Login</button>
+                <label class="label">Password</label>
+                <input type="password" name="password" class="input bg-[#0006] w-full mt-1 outline-0"
+                    placeholder="Password" />
+                @error('password')
+                    <small class="badge badge-outline badge-error w-full mt-1">{{ $message }}</small>
+                @enderror
 
-                    <p class="text-sm text-center mt-4">
-                        Don’t have an account?
-                        <a href="{{ route('register') }}" class="link link-default">
-                            Sign up
-                        </a>
-                    </p>
-                </form>
-            </div>
+                <button class="btn btn-outline hover:bg-[#fff6] hover:text-white mt-4">Login</button>
 
-        </form>
+                <p class="text-sm text-center mt-4">
+                    Don’t have an account?
+                    <a href="{{ route('register') }}" class="link link-default">
+                        Sign up
+                    </a>
+                </p>
+                <p class="text-sm text-center mt-2">
+                    <a class="link link-default" href="{{ route('password.request') }}">
+                        Forgot your password?
+                    </a>
+                </p>
+            </form>
+        </div>
     </section>
 
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.home')
 @section('title', 'Login: Larapets 🐶')
 @section('content')
-    <section class="bg-[#0007] text-white rounded-lg w-96 p-8 flex flex-col gap-4 items-center justify-center">
+    <section class="bg-[#0007] text-white rounded-lg w-96 p-8 flex flex-col gap-3 items-center justify-center">
         <h1 class="flex gap-4 justify-center items-center text-4xl">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256">
                 <path
@@ -10,7 +10,7 @@
             </svg>
             Login
         </h1>
-        <div class="divider divider-neutral"></div>
+        <div class="divider divider-neutral p-[0] m-[0]"></div>
 
 
         <div class="card w-full max-w-sm ">
@@ -20,7 +20,7 @@
                 <input type="text" name="email" class="input bg-[#0006] w-full mt-1 outline-0" required
                     placeholder="Email" />
                 @error('email')
-                    <small class="badge badge-outline badge-error w-full mt-1">{{ $message }}</small>
+                    <small class="badge badge-outline badge-error w-full mt-1 py-4.5">{{ $message }}</small>
                 @enderror
 
                 <label class="label">Password</label>

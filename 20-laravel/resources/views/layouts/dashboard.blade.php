@@ -8,8 +8,19 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="min-h-[100dvh] bg-[url({{ asset("images/fondo_verde.png") }})] bg-cover w-full flex flex-col gap-4 items-center justify-center p-8">
+
+@php
+    if(Auth::user()->role == 'Administrador'){
+    $image = 'images/fondo_admin.png';
+ }else{
+    $image = 'images/fondo_visitante.png';
+ }
+@endphp
+<body class="min-h-[100dvh] bg-[url({{ asset($image) }})] bg-cover bg-fixed w-full flex flex-col gap-4 items-center justify-center p-8">
+    @include('layouts.navbar')
     @yield('content')
+    @yield('js')
+
 </body>
 </html>
 

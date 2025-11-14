@@ -115,14 +115,14 @@
 
                             {{-- Email --}}
                             <label class="label">Email</label>
-                            <input type="text" name="email" class="input bg-[#0006] w-full outline-0" required placeholder="Email" value="{{ old('email') }}" />
+                            <input type="text" name="email" class="input bg-[#0006] w-full mt-1 outline-0" required placeholder="Email" value="{{ old('email') }}" />
                             @error('email')
                                 <small class="badge badge-outline badge-error w-full mt-1 py-4.5">{{ $message }}</small>
                             @enderror
 
                             {{-- Password --}}
                             <label class="label">Password</label>
-                            <input type="password" class="input bg-[#0006] w-full outline-0" name="password" placeholder="Password" />
+                            <input type="password" class="input bg-[#0006] w-full mt-1 outline-0" name="password" placeholder="Password" />
                             @error('password')
                                 <small class="badge badge-outline badge-error w-full mt-1 py-4.5">{{ $message }}</small>
                             @enderror

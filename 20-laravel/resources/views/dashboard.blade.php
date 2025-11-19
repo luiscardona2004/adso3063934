@@ -31,6 +31,11 @@
         </svg>
         Dashboard
     </h1>
+
+    {{-- cards --}}
+    @if(Auth::user()->role == 'Administrador')
+        
+    
     <div class="text-white flex flex-wrap gap-4 items-center justify-center ">
         {{-- module user --}}
         <div class="card bg-white/90 w-70 shadow-lg ">
@@ -253,5 +258,7 @@
                 </div>
             </div>
         </div>
+        
+    @endif
     </div>
 @endsection

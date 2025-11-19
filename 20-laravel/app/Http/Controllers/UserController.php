@@ -9,10 +9,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        // Obtener todos los usuarios de la base de datos
-        $users = User::all();
+        // $users = User::all();
+        $users = User::orderBy('id', 'desc')->paginate(20);
 
-        // Enviar los usuarios a la vista 'users.index'
-        return view('users.index', compact('users'));
+        return view('users.index',compact('users'));
+        // dd($users->toArray());
     }
 }

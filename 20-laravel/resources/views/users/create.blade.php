@@ -16,7 +16,7 @@
 
     {{-- Breadcrumbs --}}
 
-    <div class="breadcrumbs text-sm">
+    <div class="breadcrumbs text-sm ">
         <ul>
             <li>
                 <a>
@@ -51,4 +51,124 @@
         </ul>
     </div>
 
+    <div class="card w-full text-white ">
+        <form method="POST" action="{{ url('users') }}" class="flex flex-col gap-4 card-body" enctype="multipart/form-data">
+            @csrf
+
+            <!-- Dos columnas -->
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="w-full md:w-1/2">
+                    {{-- Fhoto --}}
+                    <div class="avatar flex flex-col justify-center items-center cursor-pointer hover:scale-110 transition ease-in">
+                        <div id="upload" class="mask mask-squircle w-28">
+                            <img id="preview" src="{{ asset('images/') }}" />
+                        </div>
+                        <small class="flex gap-2 mt-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="#fff" viewBox="0 0 256 256">
+                                <path
+                                    d="M168,136a8,8,0,0,1-8,8H136v24a8,8,0,0,1-16,0V144H96a8,8,0,0,1,0-16h24V104a8,8,0,0,1,16,0v24h24A8,8,0,0,1,168,136Zm64-56V192a24,24,0,0,1-24,24H48a24,24,0,0,1-24-24V80A24,24,0,0,1,48,56H75.72L87,39.12A16,16,0,0,1,100.28,32h55.44A16,16,0,0,1,169,39.12L180.28,56H208A24,24,0,0,1,232,80Zm-16,0a8,8,0,0,0-8-8H176a8,8,0,0,1-6.66-3.56L155.72,48H100.28L86.66,68.44A8,8,0,0,1,80,72H48a8,8,0,0,0-8,8V192a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8Z">
+                                </path>
+                            </svg>
+                            Upload Photo
+                        </small>
+                        @error('photo')
+                            
+                        @enderror
+                       
+                    </div>
+                        <input type="file" id="photo" name="photo" class="hidden" accept="image/*">
+                
+                    {{-- Document --}}
+
+                    <label class="label">Document</label>
+                    <input type="text" class="input bg-[#0006] w-full mt-1 outline-0" name="document"
+                        placeholder="753921345" value="{{ old('document') }}" />
+                    @error('document')
+                        <small class="badge badge-neutral w-full mt-1 text-xs py-4">{{ $message }}</small>
+                    @enderror
+
+                    {{-- FullName --}}
+                    <label class="label">FullName</label>
+                    <input type="text" class="input bg-[#0006] w-full mt-1 outline-0" name="fullname"
+                        placeholder="John Doe" value="{{ old('fullname') }}" />
+                    @error('fullname')
+                        <small class="badge badge-neutral w-full mt-1 text-xs py-4">{{ $message }}</small>
+                    @enderror
+
+                    {{-- Gender --}}
+                    <label class="label">Gender</label>
+                    <select name="gender" class="select bg-[#0009] w-full outline-0">
+                        <option value="">Select...</option>
+                        <option value="male" @if (old('gender') == 'male') selected @endif>Male</option>
+                        <option value="female" @if (old('gender') == 'female') selected @endif>Female</option>
+                    </select>
+                    @error('gender')
+                        <small class="badge badge-neutral w-full mt-1 text-xs py-4">{{ $message }}</small>
+                    @enderror
+
+
+                </div>
+
+                <div class="w-full md:w-1/2">
+                    {{-- Phone --}}
+                    <label class="label">Phone</label>
+                    <input type="text" class="input bg-[#0006] w-full mt-1 outline-0" name="phone"
+                        placeholder="123-456-7890" value="{{ old('phone') }}" />
+                    @error('phone')
+                        <small class="badge badge-neutral w-full mt-1 text-xs py-4">{{ $message }}</small>
+                    @enderror
+
+                    {{-- Email --}}
+                    <label class="label">Email</label>
+                    <input type="text" name="email" class="input bg-[#0006] w-full mt-1 outline-0" required
+                        placeholder="Email" value="{{ old('email') }}" />
+                    @error('email')
+                        <small class="badge badge-neutral w-full mt-1 py-4.5">{{ $message }}</small>
+                    @enderror
+                    {{-- Birthdate --}}
+                    <label class="label">Birthdate</label>
+                    <input type="date" class="input bg-[#0006] w-full mt-1 outline-0" name="birthdate"
+                        placeholder="1999-10-29" value="{{ old('birthdate') }}" />
+                    @error('birthdate')
+                        <small class="badge badge-neutral w-full mt-1 text-xs py-4">{{ $message }}</small>
+                    @enderror
+
+                    {{-- Password --}}
+                    <label class="label">Password</label>
+                    <input type="password" class="input bg-[#0006] w-full mt-1 outline-0" name="password"
+                        placeholder="Password" />
+                    @error('password')
+                        <small class="badge badge-neutral bg-[#0009] w-full mt-1 py-4.5">{{ $message }}</small>
+                    @enderror
+
+                    {{-- Confirm Password --}}
+                    <label class="label">Confirm Password</label>
+                    <input type="password" class="input bg-[#0006] w-full outline-0" name="password_confirmation"
+                        placeholder="Password" />
+                </div>
+            </div>
+
+            <!-- Botón debajo de las dos columnas -->
+            <button class="btn btn-outline bg-yellow-600 hover:bg-[#ffd0009d] hover:text-white mt-4">Add</button>
+
+
+
+        </form>
+    </div>
+
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('#upload').click(function(e) {
+                e.preventDefault()
+                $('#photo').click()
+            })
+            $('#photo').change(function(e) {
+                e.preventDefault()
+                $('#preview').attr('src', window.URL.createObjectURL($(this).prop('files')[0]))
+            })
+        })
+    </script>
 @endsection

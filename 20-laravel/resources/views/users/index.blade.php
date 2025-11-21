@@ -60,6 +60,8 @@
     </label>
 
 
+
+
     <div class="overflow-x-auto rounded-box border text-white bg-[#0009]">
         <table class="table">
             <!-- head -->
@@ -120,8 +122,7 @@
                                 </svg>
                             </a>
                             <a class="btn btn-outline btn-error btn-xs btn-outline" href="javascript:;">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="#f006"
-                                    viewBox="0 0 256 256">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="#f006" viewBox="0 0 256 256">
                                     <path
                                         d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
                                     </path>
@@ -138,4 +139,32 @@
         </table>
     </div>
 
+    
+    <dialog id="modal_message" class="modal">
+        <div class="modal-box bg-success">
+            <h3 class="text-lg font-bold">Congratulations!</h3>
+            <div role="alert" class="alert alert-success">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{session('message')}}</span>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+@endsection
+
+@section('js')
+<script>
+    $(document).ready(function(){
+        @if(session('message'))
+        modal_message.showModal()
+        @endif
+    })
+</script>
 @endsection

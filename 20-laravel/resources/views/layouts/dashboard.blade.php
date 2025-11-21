@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +11,21 @@
 </head>
 
 @php
-    if(Auth::user()->role == 'Administrador'){
-    $image = 'images/fondo_admin.png';
- }else{
-    $image = 'images/fondo_visitante.png';
- }
+    if (Auth::user()->role == 'Administrador') {
+        $image = 'images/fondo_admin.png';
+    } else {
+        $image = 'images/fondo_visitante.png';
+    }
 @endphp
-<body class="min-h-[100dvh] bg-[url({{ asset($image) }})] bg-cover bg-fixed w-full flex flex-col gap-4 items-center justify-center p-8">
+
+<body
+    class="min-h-[100dvh] bg-[url({{ asset($image) }})] bg-cover bg-fixed w-full flex flex-col gap-4 items-center justify-center p-8">
     @include('layouts.navbar')
     @yield('content')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" referrerpolicy="no-referrer"></script>
     @yield('js')
+    
 
 </body>
-</html>
 
+</html>

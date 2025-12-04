@@ -58,7 +58,7 @@
             </div>
         </div>
         {{-- data --}}
-        <div class="flex gap-2">
+        <div class="flex gap-2">    
             <ul class="list bg-[#0009] text-white mt-4 rounded-box shadow-md">
                 <li class="list-row">
                     <span class="text-[#fff9]">Document: <span>{{ $user->document }}</span></span>

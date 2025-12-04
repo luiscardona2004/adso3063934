@@ -99,8 +99,8 @@
                     <label class="label">Gender</label>
                     <select name="gender" class="select bg-[#0009] w-full outline-0">
                         <option value="">Select...</option>
-                        <option value="male" @if (old('gender') == 'male') selected @endif>Male</option>
-                        <option value="female" @if (old('gender') == 'female') selected @endif>Female</option>
+                        <option value="Male" @if (old('gender') == 'Male') selected @endif>Male</option>
+                        <option value="Female" @if (old('gender') == 'Female') selected @endif>Female</option>
                     </select>
                     @error('gender')
                         <small class="badge badge-neutral w-full mt-1 text-xs py-4">{{ $message }}</small>

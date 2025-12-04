@@ -42,14 +42,14 @@ class UserController extends Controller
             'email'     => ['required', 'lowercase', 'email', 'unique:' . User::class],
             'password'  => ['required', 'confirmed'],
         ]);
-            if($request->hasFile('photo')) {
-                $photo = time().'.'.$request->photo->extension();
-                $request->photo->move(public_path('images'), $photo);
-            }
-        
+        if ($request->hasFile('photo')) {
+            $photo = time() . '.' . $request->photo->extension();
+            $request->photo->move(public_path('images'), $photo);
+        }
+
         $user = new User;
         $user->document  = $request->document;
-        $user->fullname  = $request->fullname;  
+        $user->fullname  = $request->fullname;
         $user->gender    = $request->gender;
         $user->birthdate = $request->birthdate;
         $user->photo     = $photo;
@@ -57,8 +57,8 @@ class UserController extends Controller
         $user->email     = $request->email;
         $user->password  = bcrypt($request->password);
 
-        if($user->save()) {
-            return redirect('users')->with('message', 'The user:  ' .$user->fullname. '  was successfully added!');
+        if ($user->save()) {
+            return redirect('users')->with('message', 'The user:  ' . $user->fullname . '  was successfully added!');
         }
     }
 
@@ -67,8 +67,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-    
-        return view('users.show')->with('user',$user);
+
+        return view('users.show')->with('user', $user);
     }
 
     /**
@@ -76,7 +76,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.edit')->with('user', $user);
     }
 
     /**
@@ -84,7 +84,38 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validation = $request->validate([
+            'document' => ['required', 'numeric', 'unique:' . User::class . ',document,' . $user->id],
+            'fullname' => ['required', 'string'],
+            'gender' => ['required'],
+            'birthdate' => ['required', 'date'],
+            'phone' => ['required'],
+            'email' => ['required', 'lowercase', 'email', 'unique:' . User::class . ',email,' . $user->id],
+        ]);
+        if ($request->hasFile('photo')) {
+            // dd($request->all());
+            if ($request->hasFile('photo')) {
+                $photo = time() . '.' . $request->photo->extension();
+                $request->photo->move(public_path('images/'), $photo);
+                if ($request->originphoto != 'no-photo.png') {
+                    unlink(public_path('images/'). $request->originphoto);
+                }
+            } else {
+                $photo = $request->originphoto;
+            }
+        }
+
+        $user->document = $request->document;
+        $user->fullname = $request->fullname;
+        $user->gender = $request->gender;
+        $user->birthdate = $request->birthdate;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+
+
+        if ($user->save()) {
+            return redirect('users')->with('message', 'The user:  ' . $user->fullname . '  Was successfully edited!');
+        }
     }
 
     /**
@@ -92,6 +123,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        if($user->photo != 'no-photo.png'){
+            unlink(public_path('images/').$user->photo);
+        }
+        if($user->delete()){
+            return redirect('users')->with('message','The user: '.$user->fullname.'Was successfully deleted');
+        }
     }
 }

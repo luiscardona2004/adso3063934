@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PetController;
+use App\Http\Controllers\AdoptionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,35 +16,52 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::resources([
         'users' => UserController::class,
-        // 'pets'=> PetController::class,
-        // 'adoptions'=> AdoptionController::class,
+        'pets' => PetController::class,
+        
     ]);
+    // adoptions
+    Route::get('adoptions',[AdoptionController::class, 'index']);
+    Route::get('adoptions/{id}',[AdoptionController::class, 'show']);
+    Route::post('search/adoptions', [AdoptionController::class, 'search']);
+    Route::get('export/adoptions/pdf', [AdoptionController::class, 'pdf']);
+    Route::get('export/adoptions/excel', [AdoptionController::class, 'excel']);
+    // Search
+    Route::post('search/users', [UserController::class, 'search']);
+    Route::post('search/pets', [petController::class, 'search']);
+    // export
+    Route::get('export/users/pdf', [UserController::class, 'pdf']);
+    Route::get('export/users/excel', [UserController::class, 'excel']);
+    Route::post('import/users', [UserController::class, 'import']);
+
+    // Pets export
+    Route::get('export/pets/pdf', [PetController::class, 'pdf']);
+    Route::get('export/pets/excel', [PetController::class, 'excel']);
 });
 
-Route::get('hello', function() {
+Route::get('hello', function () {
     return "<h1>Hello folks, Have a nice day 😍</h1";
 });
 
-Route::get('hello/{name}', function() {
-    return "<h1>Hello: ".request()->name."</h1";
+Route::get('hello/{name}', function () {
+    return "<h1>Hello: " . request()->name . "</h1";
 });
 
-Route::get('show/pets', function() {
+Route::get('show/pets', function () {
     $pets = App\Models\Pet::all();
     dd($pets->toArray()); // Dump & Die
 });
 
-Route::get('show/pet/{id}', function() {
+Route::get('show/pet/{id}', function () {
     $pet = App\Models\Pet::find(request()->id);
     dd($pet->toArray());
 });
 
-Route::get('challenge', function() {
+Route::get('challenge', function () {
     $users = App\Models\User::take(20)->get();
     $stylesTH = "style='background: gray; color: white; padding: 0.4rem'";
     $stylesTD = "style='border: 1px solid gray; padding: 0.4rem'";
     //dd($users->toArray());
-       $code = "<table style='border-collapse: collapse; margin: 2rem auto; font-family: Arial'>
+    $code = "<table style='border-collapse: collapse; margin: 2rem auto; font-family: Arial'>
                 <tr>
                     <th $stylesTH>Id</th>
                     <th $stylesTH'>Photo</th>
@@ -50,24 +69,24 @@ Route::get('challenge', function() {
                     <th $stylesTH'>Age</th>
                     <th $stylesTH'>Created At</th>
                 </tr>";
-    foreach($users as $user) {
-        $code .= ($user->id%2 == 0) ? "<tr style='background: #ddd'>" : "<tr>";
-        $code .=    "<td $stylesTD>".$user->id."</td>";
-        $code .=    "<td $stylesTD><img src='".asset('images/'.$user->photo)."' width='40px'></td>";
-        $code .=    "<td $stylesTD>".$user->fullname."</td>";
-        $code .=    "<td $stylesTD>".Carbon\Carbon::parse($user->birthdate)->age." years old</td>";
-        $code .=    "<td $stylesTD>".$user->created_at->diffForHumans()."</td>";
+    foreach ($users as $user) {
+        $code .= ($user->id % 2 == 0) ? "<tr style='background: #ddd'>" : "<tr>";
+        $code .=    "<td $stylesTD>" . $user->id . "</td>";
+        $code .=    "<td $stylesTD><img src='" . asset('images/' . $user->photo) . "' width='40px'></td>";
+        $code .=    "<td $stylesTD>" . $user->fullname . "</td>";
+        $code .=    "<td $stylesTD>" . Carbon\Carbon::parse($user->birthdate)->age . " years old</td>";
+        $code .=    "<td $stylesTD>" . $user->created_at->diffForHumans() . "</td>";
         $code .= "</tr>";
     }
     return $code . "</table>";
 });
 
-Route::get('view/pets', function() {
+Route::get('view/pets', function () {
     $pets = App\Models\Pet::all();
     return view('view-pets')->with('pets', $pets);
 });
 
-Route::get('view/pet/{id}', function() {
+Route::get('view/pet/{id}', function () {
     $pet = App\Models\Pet::find(request()->id);
     return view('view-pet')->with('pet', $pet);
 });
@@ -75,9 +94,11 @@ Route::get('view/pet/{id}', function() {
 
 
 
-Route::get('view/pet/{id}', function() {
+Route::get('view/pet/{id}', function () {
     $pet = App\Models\Pet::find(request()->id);
     return view('view-pet')->with('pet', $pet);
 });
 
-require __DIR__.'/auth.php';
+
+
+require __DIR__ . '/auth.php';

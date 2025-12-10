@@ -18,11 +18,26 @@ class Adoption extends Model
     // relationships 
     // adoptions belongTo user 
 
-    public function user(){
-        return $this->belongsTo(User::class); 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
-    public function pet(){
-        return $this->belongsTo(Pet::class); 
+    public function pet()
+    {
+        return $this->belongsTo(Pet::class);
     }
-    
+    public function scopeNames($query, $q)
+    {
+        if (trim($q)) {
+            $query->whereHas('user', function ($u) use ($q) {
+                $u->where('fullname', 'LIKE', "%$q%");
+            })
+                ->orWhereHas('pet', function ($p) use ($q) {
+                    $p->where('name', 'LIKE', "%$q%")
+                        ->orWhere('kind', 'LIKE', "%$q%");
+                });
+        }
+
+        return $query;
+    }
 }

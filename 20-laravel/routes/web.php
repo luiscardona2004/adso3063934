@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +15,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::group(['middleware' => 'admin'], function (){
+
+    
     Route::resources([
         'users' => UserController::class,
         'pets' => PetController::class,
@@ -36,6 +40,24 @@ Route::middleware('auth')->group(function () {
     // Pets export
     Route::get('export/pets/pdf', [PetController::class, 'pdf']);
     Route::get('export/pets/excel', [PetController::class, 'excel']);
+    });
+
+
+    // Customer
+    Route::get('myprofile/',[CustomerController::class,'myprofile']);
+    Route::put('myprofile/{id}',[CustomerController::class,'updatemyprofile'])->name('myprofile.update');
+
+    Route::get('myadoptions/',[CustomerController::class,'myadoptions']);
+    Route::get('myadoptions/{id}',[CustomerController::class,'showadoption']);
+
+    Route::get('makeadoption/',[CustomerController::class,'listpets']);
+    Route::get('makeadoption/{id}',[CustomerController::class,'confirmadoption']);
+    Route::post('makeadoption', [CustomerController::class, 'makeadoption']);
+    Route::post('search/makeadoption',[CustomerController::class,'search']);
+
+    
+    // Myprofile
+
 });
 
 Route::get('hello', function () {

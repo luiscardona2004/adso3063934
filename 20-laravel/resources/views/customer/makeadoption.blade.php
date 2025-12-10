@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Module Adoptions: Larapets')
+@section('title', 'Module Pets: Larapets')
 
 @section('content')
 
@@ -10,29 +10,9 @@
                 d="M212,80a28,28,0,1,0,28,28A28,28,0,0,0,212,80Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,212,120ZM72,108a28,28,0,1,0-28,28A28,28,0,0,0,72,108ZM44,120a12,12,0,1,1,12-12A12,12,0,0,1,44,120ZM92,88A28,28,0,1,0,64,60,28,28,0,0,0,92,88Zm0-40A12,12,0,1,1,80,60,12,12,0,0,1,92,48Zm72,40a28,28,0,1,0-28-28A28,28,0,0,0,164,88Zm0-40a12,12,0,1,1-12,12A12,12,0,0,1,164,48Zm23.12,100.86a35.3,35.3,0,0,1-16.87-21.14,44,44,0,0,0-84.5,0A35.25,35.25,0,0,1,69,148.82,40,40,0,0,0,88,224a39.48,39.48,0,0,0,15.52-3.13,64.09,64.09,0,0,1,48.87,0,40,40,0,0,0,34.73-72ZM168,208a24,24,0,0,1-9.45-1.93,80.14,80.14,0,0,0-61.19,0,24,24,0,0,1-20.71-43.26,51.22,51.22,0,0,0,24.46-30.67,28,28,0,0,1,53.78,0,51.27,51.27,0,0,0,24.53,30.71A24,24,0,0,1,168,208Z">
             </path>
         </svg>
-        Module Pets
+        Make Adoption
     </h1>
 
-    <div class="join">
-
-        <a class="btn btn-warning join-item" href="{{ url('export/adoptions/pdf') }}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#fff" viewBox="0 0 256 256">
-                <path
-                    d="M224,152a8,8,0,0,1-8,8H192v16h16a8,8,0,0,1,0,16H192v16a8,8,0,0,1-16,0V152a8,8,0,0,1,8-8h32A8,8,0,0,1,224,152ZM92,172a28,28,0,0,1-28,28H56v8a8,8,0,0,1-16,0V152a8,8,0,0,1,8-8H64A28,28,0,0,1,92,172Zm-16,0a12,12,0,0,0-12-12H56v24h8A12,12,0,0,0,76,172Zm88,8a36,36,0,0,1-36,36H112a8,8,0,0,1-8-8V152a8,8,0,0,1,8-8h16A36,36,0,0,1,164,180Zm-16,0a20,20,0,0,0-20-20h-8v40h8A20,20,0,0,0,148,180ZM40,112V40A16,16,0,0,1,56,24h96a8,8,0,0,1,5.66,2.34l56,56A8,8,0,0,1,216,88v24a8,8,0,0,1-16,0V96H152a8,8,0,0,1-8-8V40H56v72a8,8,0,0,1-16,0ZM160,80h28.69L160,51.31Z">
-                </path>
-            </svg>
-            <span class="hidden md:inline"> Export PDF</span>
-        </a>
-        <a class="btn btn-primary join-item " href="{{ url('export/adoptions/excel') }}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#fff" viewBox="0 0 256 256">
-                <path
-                    d="M156,208a8,8,0,0,1-8,8H120a8,8,0,0,1-8-8V152a8,8,0,0,1,16,0v48h20A8,8,0,0,1,156,208ZM92.65,145.49a8,8,0,0,0-11.16,1.86L68,166.24,54.51,147.35a8,8,0,1,0-13,9.3L58.17,180,41.49,203.35a8,8,0,0,0,13,9.3L68,193.76l13.49,18.89a8,8,0,0,0,13-9.3L77.83,180l16.68-23.35A8,8,0,0,0,92.65,145.49Zm98.94,25.82c-4-1.16-8.14-2.35-10.45-3.84-1.25-.82-1.23-1-1.12-1.9a4.54,4.54,0,0,1,2-3.67c4.6-3.12,15.34-1.72,19.82-.56a8,8,0,0,0,4.07-15.48c-2.11-.55-21-5.22-32.83,2.76a20.58,20.58,0,0,0-8.95,14.95c-2,15.88,13.65,20.41,23,23.11,12.06,3.49,13.12,4.92,12.78,7.59-.31,2.41-1.26,3.33-2.15,3.93-4.6,3.06-15.16,1.55-19.54.35A8,8,0,0,0,173.93,214a60.63,60.63,0,0,0,15.19,2c5.82,0,12.3-1,17.49-4.46a20.81,20.81,0,0,0,9.18-15.23C218,179,201.48,174.17,191.59,171.31ZM40,112V40A16,16,0,0,1,56,24h96a8,8,0,0,1,5.66,2.34l56,56A8,8,0,0,1,216,88v24a8,8,0,1,1-16,0V96H152a8,8,0,0,1-8-8V40H56v72a8,8,0,0,1-16,0ZM160,80h28.68L160,51.31Z">
-                </path>
-            </svg>
-            <span class="hidden md:inline">Export Excel</span>
-        </a>
-
-    </div>
 
 
     <label class="input text-white bg-[#0009] outline-none mb-2">
@@ -46,34 +26,94 @@
 
     </label>
 
-    @csrf
-    <div class="datalist flex justify-center items-center flex-col gap-4">
-        @foreach ($adopts as $adopt)
-            <div class="avatar-group -space-x-6">
-                <div class="avatar">
-                    <div class="w-24">
-                        <img src="{{ asset('images/' . $adopt->user->photo) }}" />
-                    </div>
-                </div>
-                <div class="avatar">
-                    <div class="w-24">
-                        <img src="{{ asset('images/' . $adopt->pet->image) }}" />
-                    </div>
-                </div>
-            </div>
-            <h4 class="text-white">
-                <span class="underline font-bold">{{ $adopt->pet->name }}</span>
-                adopted by
-                <span>{{ $adopt->user->fullname }}</span>
-                on {{ $adopt->created_at->diffForHumans() }}
-            </h4>
-            <a href="{{ 'adoptions/' . $adopt->id }}" class="btn btn-info">
-                More info
-            </a>
-            <span class="border b-1 border-white w-8/12"></span>
-        @endforeach
-    </div>
 
+
+
+    <div class="overflow-x-auto rounded-box border text-white bg-[#0009]">
+        <table class="table">
+            <thead>
+                <tr class="text-white">
+                    <th class="hidden md:table-cell">Id</th>
+                    <th>Photo</th>
+                    <th class="hidden md:table-cell">Name</th>
+                    <th>Kind</th>
+                    <th class="hidden md:table-cell">Breed</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody class="datalist">
+
+                @foreach ($pets as $pet)
+                    <tr @if ($pet->id % 2 == 0) class="bg-[#0006]" @endif>
+
+                        <td class="hidden md:table-cell">{{ $pet->id }}</td>
+
+                        <td>
+                            <div class="avatar">
+                                <div class="mask mask-squircle w-12">
+                                    <img
+                                        src="{{ asset($pet->image ? 'images/' . $pet->image : 'images/no-image.png') }}" />x|
+                                </div>
+                            </div>
+                        </td>
+
+                        <td class="hidden md:table-cell">{{ $pet->name }}</td>
+                        <td>
+                            @if ($pet->kind == 'Dog')
+                                <span class="badge bg-blue-500 text-white px-2 py-1 rounded">Dog</span>
+                            @elseif ($pet->kind == 'Cat')
+                                <span class="badge bg-purple-500 text-white px-2 py-1 rounded">Cat</span>
+                            @elseif ($pet->kind == 'Bird')
+                                <span class="badge bg-green-500 text-white px-2 py-1 rounded">Bird</span>
+                            @elseif ($pet->kind == 'Pig')
+                                <span class="badge bg-yellow-500 text-white px-2 py-1 rounded">Pig</span>
+                            @else
+                                <span class="badge bg-gray-500 text-white px-2 py-1 rounded">Otro</span>
+                            @endif
+                        </td>
+
+                        <td class="hidden md:table-cell">
+                            {{ $pet->breed }}
+                        </td>
+
+                        <td>
+                            @if ($pet->status == 1)
+                                <div class="badge badge-accent">Adopted</div>
+                            @else
+                                <div class="badge badge-error">Available</div>
+                            @endif
+                        </td>
+
+                        <td>
+                            <!-- VIEW -->
+                            <a class="btn btn-xs btn-outline" href="{{ url('makeadoption/'. $pet->id) }}"
+                                title="Adopt {{ $pet->name }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="#fff" viewBox="0 0 256 256">
+                                    <path
+                                        d="M223,57a58.07,58.07,0,0,0-81.92-.1L128,69.05,114.91,56.86A58,58,0,0,0,33,139l89.35,90.66a8,8,0,0,0,11.4,0L223,139a58,58,0,0,0,0-82Zm-11.35,70.76L128,212.6,44.3,127.68a42,42,0,0,1,59.4-59.4l.2.2,18.65,17.35a8,8,0,0,0,10.9,0L152.1,68.48l.2-.2a42,42,0,1,1,59.36,59.44Z">
+                                    </path>
+                                </svg>
+                            </a>
+
+                            <form class="hidden" method="POST" action="{{ url('pets/' . $pet->id) }}">
+                                @csrf
+                                @method('delete')
+                            </form>
+                        </td>
+
+                    </tr>
+                @endforeach
+
+                <tr class="bg-[#0008]">
+                    <td colspan="7">{{ $pets->links('layouts.pagination') }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
 
 
     <dialog id="modal_message" class="modal">
@@ -117,13 +157,18 @@
             <button>Cancel</button>
         </form>
     </dialog>
+    
 
 @endsection
 
 @section('js')
     <script>
-        // Modal 
         $(document).ready(function() {
+            //Modal
+            const modal_message = document.getElementById('modal_message');
+            @if (session('success'))
+                modal_message.showModal();
+            @endif
 
             // Search
             function debounce(func, wait) {
@@ -141,7 +186,7 @@
 
                 $token = $('input[name=_token]').val()
 
-                $.post("search/adoptions", {
+                $.post("search/makeadoption", {
                         'q': query,
                         '_token': $token
                     },
@@ -154,26 +199,19 @@
                 event.preventDefault()
                 const query = $(this).val()
 
-                $('.datalist').html(`
-                                      <div class="text-center py-18">
-                                          <span class="loading loading-spinner loading-xl"></span>
-                                      </div>
-                                    `)
+                $('.datalist').html(`<tr>
+                                        <td colspan="7" class="text-center py-18">
+                                            <span class="loading loading-spinner text-warning"></span>
+                                        </td>
+                                    </tr>`)
 
                 if (query != '') {
                     search(query)
                 } else {
                     setTimeout(() => {
-                        window.location.replace('adoptions')
-                    }, 500);
+                        window.location.replace('makeadoption')
+                    }, 500)
                 }
-            })
-            // Import
-            $('.btn-import').click(function() {
-                $('#file').click()
-            })
-            $('#file').change(function() {
-                $(this).parent().submit()
             })
         })
     </script>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API JS: LaraPets</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.18/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- screen/pantalla/vista de login -->
+
+    <main id="login">
+        <header>
+            <img src="images/login.png" alt="Login">
+        </header>
+        <form id="loginForm">
+            <label for="email">Email
+                <input type="email" id="email" name="email" placeholder="example@gmail.com">
+            </label>
+            <label for="password">Password
+                <input type="password" id="password" name="password" placeholder="Secret">
+            </label>
+            <button class="btnLogin">Login</button>
+        </form>
+    </main>
+
+    <main id="dashboard">
+        <header style="display: flex;
+                        justify-content: center;
+                        align-items: center;">
+            <img src="images/Dashboard.png" alt="Dashboard">
+
+        </header>
+        <nav>
+            <a href="javascript:;" class="add btnAdd">+ Add Pet</a>
+            <a href="javascript:;" class="btnLogout">Logout</a>
+        </nav>
+        <div class="petlist">
+            Pet List
+        </div>
+        <section class="list" id="petList">
+        </section>
+    </main>
+
+    <main id="add">
+        <header>
+            <a href="javascript:;" class="btnBack">
+                <img src="images/btn_back.png" alt="add">
+            </a>
+            <img src="images/add_pet.png" alt="add">
+        </header>
+        <form action="">
+            <label for="name">Name
+                <input type="text" name="name" placeholder="Firulais">
+            </label>
+            <label for="breed">Breed
+                <input type="text" name="Breed" placeholder="Cocker">
+            </label>
+            <label for="kind">Kind
+                <input type="text" name="password" placeholder="Dog">
+            </label>
+            <label for="Weight">Weight
+                <input type="text" name="Weight" placeholder="14.5">
+            </label>
+            <label for="age">Age
+                <input type="text" name="age" placeholder="10">
+            </label>
+            <label for="location">Location
+                <input type="text" name="location" placeholder="Bogota">
+            </label>
+            <label for="description">
+                Description
+                <textarea name="description" placeholder="Nice dog so charming lovely"></textarea>
+            </label>
+            <div class="actions">
+                <button type="button">Save</button>
+                <a href="javascript:;" class="btnCancel">Cancel</a>
+            </div>
+        </form>
+    </main>
+
+    <main id="show">
+        <header>
+            <a href="javascript:;" class="btnBack">
+                <img src="images/btn_back.png" alt="Back">
+            </a>
+            <img src="images/show.png" alt="show">
+        </header>
+
+        <section class="pet-detail">
+            <img src="images/pet1.png" alt="Pet" class="pet-image">
+
+            <div class="card">
+                <div class="item">
+                    <span>Name:</span>
+                    <p>Benji</p>
+                </div>
+                <div class="item">
+                    <span>Breed:</span>
+                    <p>Cocker</p>
+                </div>
+                <div class="item">
+                    <span>Kind:</span>
+                    <p>Dog</p>
+                </div>
+                <div class="item">
+                    <span>Weight:</span>
+                    <p>14.5</p>
+                </div>
+                <div class="item">
+                    <span>Age:</span>
+                    <p>11</p>
+                </div>
+                <div class="item">
+                    <span>Location:</span>
+                    <p>Manizales</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="edit">
+        <header>
+            <a href="javascript:;" class="btnBack">
+                <img src="images/btn_back.png" alt="Back">
+            </a>
+            <img src="images/edit.png" alt="add">
+        </header>
+
+        <section class="edit-container">
+
+            <img src="images/pet1.png" alt="Pet" class="pet-image-edit">
+
+            <form>
+                <label>Name
+                    <input type="text" name="name" value="Benji">
+                </label>
+
+                <label>Breed
+                    <input type="text" name="breed" value="Cocker">
+                </label>
+
+                <label>Kind
+                    <input type="text" name="kind" value="Dog">
+                </label>
+
+                <label>Weight
+                    <input type="text" name="weight" value="14.5">
+                </label>
+
+                <label>Age
+                    <input type="text" name="age" value="11">
+                </label>
+
+                <label>Location
+                    <input type="text" name="location" value="Manizales">
+                </label>
+
+                <div class="actions">
+                    <button type="button">Save</button>
+                    <a href="javascript:;" class="btnCancel">Cancel</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+
+    <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.26.18/dist/sweetalert2.all.min.js"></script>
+</body>
+
+</html>

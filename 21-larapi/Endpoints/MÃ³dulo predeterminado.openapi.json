@@ -1,0 +1,812 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Módulo predeterminado",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/api/pets/list": {
+      "get": {
+        "summary": "list pets",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "mesagge": "Successfull Query 🐶",
+                  "pets": [
+                    {
+                      "id": 1,
+                      "name": "Firulais5555",
+                      "image": "1764853507.png",
+                      "kind": "Cat",
+                      "weight": 7.56,
+                      "age": 555,
+                      "breed": "French Bulldo55555",
+                      "location": "Paris544",
+                      "description": "Black dog, so charming, lovely555",
+                      "active": 0,
+                      "status": 1,
+                      "created_at": "2025-10-23T16:31:07.000000Z",
+                      "updated_at": "2025-12-04T13:44:38.000000Z"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Killer",
+                      "image": "no-image.png",
+                      "kind": "Dog",
+                      "weight": 18,
+                      "age": 6,
+                      "breed": "Canne Corso",
+                      "location": "Millan",
+                      "description": "Explosive & , be carefully with it, Danger",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:07.000000Z",
+                      "updated_at": "2025-10-23T16:31:07.000000Z"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Pistacho",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 5,
+                      "age": 1,
+                      "breed": "Mestizo",
+                      "location": "Manizales",
+                      "description": "Beatifull & , sweet",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:07.000000Z",
+                      "updated_at": "2025-10-23T16:31:07.000000Z"
+                    },
+                    {
+                      "id": 5,
+                      "name": "Milo",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 9.6,
+                      "age": 0,
+                      "breed": "Scottish Fold",
+                      "location": "Langmouth",
+                      "description": "Sapiente dolores dolores adipisci inventore eligendi id.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 6,
+                      "name": "Murphy",
+                      "image": "no-image.png",
+                      "kind": "Bird",
+                      "weight": 3.3,
+                      "age": 4,
+                      "breed": "Toucan",
+                      "location": "Port Londonhaven",
+                      "description": "Nihil explicabo temporibus nam corrupti.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 7,
+                      "name": "Lily",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 6.9,
+                      "age": 1,
+                      "breed": "British Shorthair",
+                      "location": "Clydehaven",
+                      "description": "Et repellendus saepe qui voluptas inventore est exercitationem sunt sit corrupti.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 8,
+                      "name": "Zeus",
+                      "image": "no-image.png",
+                      "kind": "Dog",
+                      "weight": 1.5,
+                      "age": 3,
+                      "breed": "Beagle",
+                      "location": "South Felicita",
+                      "description": "Quo nisi sit ut ut adipisci harum commodi.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 9,
+                      "name": "Murphy",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 1.7,
+                      "age": 3,
+                      "breed": "Russian Blue",
+                      "location": "Jovannystad",
+                      "description": "Sint voluptatem quibusdam aut nam vitae culpa sed sapiente eos explicabo.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 11,
+                      "name": "Gracie",
+                      "image": "no-image.png",
+                      "kind": "Dog",
+                      "weight": 9.1,
+                      "age": 0,
+                      "breed": "Siberian Husky",
+                      "location": "Ernserchester",
+                      "description": "Laboriosam id deserunt amet doloremque ipsam voluptas deleniti.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 12,
+                      "name": "Nala",
+                      "image": "no-image.png",
+                      "kind": "Pig",
+                      "weight": 5.2,
+                      "age": 2,
+                      "breed": "Hampshire",
+                      "location": "South Katlynfort",
+                      "description": "Debitis quo iusto ullam et blanditiis quae fugiat.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 13,
+                      "name": "Lola",
+                      "image": "no-image.png",
+                      "kind": "Dog",
+                      "weight": 1.6,
+                      "age": 4,
+                      "breed": "German Shepherd",
+                      "location": "Buckridgemouth",
+                      "description": "Non dolor itaque et facilis nulla corporis voluptatum enim assumenda aut.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 14,
+                      "name": "Beau",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 8.1,
+                      "age": 3,
+                      "breed": "Ragdoll",
+                      "location": "Abbottbury",
+                      "description": "Architecto enim aut nihil ad in ad accusamus.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 15,
+                      "name": "Finn",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 8.9,
+                      "age": 6,
+                      "breed": "Scottish Fold",
+                      "location": "Jalenchester",
+                      "description": "Et atque sed voluptas aut corporis occaecati corporis.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 16,
+                      "name": "Athena",
+                      "image": "no-image.png",
+                      "kind": "Pig",
+                      "weight": 5.5,
+                      "age": 9,
+                      "breed": "Landrace",
+                      "location": "Howellchester",
+                      "description": "Ut in et eos fuga nihil pariatur ut debitis quis.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 17,
+                      "name": "Lily",
+                      "image": "no-image.png",
+                      "kind": "Bird",
+                      "weight": 7.1,
+                      "age": 0,
+                      "breed": "Andean Condor",
+                      "location": "Reichertfurt",
+                      "description": "Voluptas voluptatem quo officia officia excepturi rerum.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 18,
+                      "name": "Maya",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 9.1,
+                      "age": 9,
+                      "breed": "Ragdoll",
+                      "location": "North Marleytown",
+                      "description": "Aut quos velit accusamus error quibusdam voluptatum.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 19,
+                      "name": "Marley",
+                      "image": "no-image.png",
+                      "kind": "Pig",
+                      "weight": 1.3,
+                      "age": 0,
+                      "breed": "Yorkshire",
+                      "location": "New Carole",
+                      "description": "Nam dolor eius voluptatibus ipsam expedita.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 20,
+                      "name": "Sasha",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 3.9,
+                      "age": 9,
+                      "breed": "British Shorthair",
+                      "location": "Carlimouth",
+                      "description": "Voluptas quis blanditiis cum aut non sed.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 21,
+                      "name": "Luna",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 0.5,
+                      "age": 6,
+                      "breed": "British Shorthair",
+                      "location": "Port Ellsworth",
+                      "description": "Nobis iusto occaecati rem enim suscipit.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 22,
+                      "name": "Lucy",
+                      "image": "no-image.png",
+                      "kind": "Bird",
+                      "weight": 4.9,
+                      "age": 0,
+                      "breed": "Blue-and-yellow Macaw",
+                      "location": "South Elijah",
+                      "description": "Ab corrupti iure corrupti nulla officiis debitis ipsum omnis repellat optio.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 23,
+                      "name": "Lola",
+                      "image": "no-image.png",
+                      "kind": "Bird",
+                      "weight": 3.2,
+                      "age": 3,
+                      "breed": "Andean Condor",
+                      "location": "New Bryce",
+                      "description": "Consequatur quibusdam consectetur quaerat dolorum vel et molestias blanditiis veritatis id.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 24,
+                      "name": "Gracie",
+                      "image": "no-image.png",
+                      "kind": "Dog",
+                      "weight": 8.2,
+                      "age": 0,
+                      "breed": "Chihuahua",
+                      "location": "North Carlos",
+                      "description": "Dolore enim ut et debitis dolorem dolor et ut quae.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 25,
+                      "name": "Roxy",
+                      "image": "no-image.png",
+                      "kind": "Pig",
+                      "weight": 3.2,
+                      "age": 4,
+                      "breed": "Yorkshire",
+                      "location": "Orinton",
+                      "description": "Dolore illo qui doloribus et est in nostrum consequatur fugit.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 26,
+                      "name": "Scout",
+                      "image": "no-image.png",
+                      "kind": "Pig",
+                      "weight": 6.3,
+                      "age": 3,
+                      "breed": "Large White",
+                      "location": "Laviniaport",
+                      "description": "Quos fuga nisi voluptatem et provident eum repellendus.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 27,
+                      "name": "Ginger",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 5.7,
+                      "age": 3,
+                      "breed": "Bengal",
+                      "location": "South Lelia",
+                      "description": "Dolor velit modi nihil ab laborum placeat.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 28,
+                      "name": "Oliver",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 7.1,
+                      "age": 8,
+                      "breed": "Maine Coon",
+                      "location": "Lake Fredyland",
+                      "description": "Non temporibus qui non et at cum aliquam possimus quidem ipsum.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 29,
+                      "name": "Remi",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 3.9,
+                      "age": 9,
+                      "breed": "Russian Blue",
+                      "location": "West Meagan",
+                      "description": "Porro necessitatibus consequatur sed ratione quos.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 30,
+                      "name": "Buddy",
+                      "image": "no-image.png",
+                      "kind": "Bird",
+                      "weight": 6.7,
+                      "age": 3,
+                      "breed": "Harpy Eagle",
+                      "location": "West Della",
+                      "description": "Voluptatem est vero quam consectetur quod.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 31,
+                      "name": "Bailey",
+                      "image": "no-image.png",
+                      "kind": "Dog",
+                      "weight": 3.2,
+                      "age": 5,
+                      "breed": "Rottweiler",
+                      "location": "Lake Ladariusland",
+                      "description": "At omnis qui fuga consequatur ea ut et eos dolorem necessitatibus.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 32,
+                      "name": "Toby",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 2.9,
+                      "age": 2,
+                      "breed": "Russian Blue",
+                      "location": "East Fernbury",
+                      "description": "Blanditiis temporibus beatae consequuntur velit sint et veritatis.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 33,
+                      "name": "Shadow",
+                      "image": "no-image.png",
+                      "kind": "Bird",
+                      "weight": 4.5,
+                      "age": 5,
+                      "breed": "Harpy Eagle",
+                      "location": "Barrowsland",
+                      "description": "Laborum nulla in sed neque architecto.",
+                      "active": 1,
+                      "status": 1,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-12-10T20:49:42.000000Z"
+                    },
+                    {
+                      "id": 34,
+                      "name": "Roxy",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 2.5,
+                      "age": 2,
+                      "breed": "Russian Blue",
+                      "location": "Port Lawrenceberg",
+                      "description": "Id eos reprehenderit et perspiciatis quisquam.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 35,
+                      "name": "Bandit",
+                      "image": "no-image.png",
+                      "kind": "Pig",
+                      "weight": 4.7,
+                      "age": 5,
+                      "breed": "Duroc",
+                      "location": "Beahantown",
+                      "description": "Doloribus quas quibusdam est vel fugiat voluptas dicta.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 36,
+                      "name": "Princess",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 6,
+                      "age": 3,
+                      "breed": "Scottish Fold",
+                      "location": "Jaleelland",
+                      "description": "Eum placeat sed nisi modi totam veniam.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 37,
+                      "name": "Thor",
+                      "image": "no-image.png",
+                      "kind": "Dog",
+                      "weight": 2.7,
+                      "age": 2,
+                      "breed": "Siberian Husky",
+                      "location": "Hellerville",
+                      "description": "Vel veniam deleniti laborum tenetur ipsa distinctio.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 38,
+                      "name": "Bella",
+                      "image": "no-image.png",
+                      "kind": "Pig",
+                      "weight": 3,
+                      "age": 7,
+                      "breed": "Tamworth",
+                      "location": "Stokesburgh",
+                      "description": "Maiores et consequatur accusantium voluptatem sunt est placeat quibusdam eos aut.",
+                      "active": 1,
+                      "status": 1,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-12-10T21:31:53.000000Z"
+                    },
+                    {
+                      "id": 39,
+                      "name": "Benji",
+                      "image": "no-image.png",
+                      "kind": "Bird",
+                      "weight": 8.3,
+                      "age": 6,
+                      "breed": "Cockatiel",
+                      "location": "South Joshuah",
+                      "description": "Iusto ut ad in eaque placeat.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 40,
+                      "name": "Mia",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 2.7,
+                      "age": 4,
+                      "breed": "Persian",
+                      "location": "Keshawnbury",
+                      "description": "Repellat voluptatem tempora optio corporis quas molestiae sit consectetur et.",
+                      "active": 1,
+                      "status": 1,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-12-10T20:37:22.000000Z"
+                    },
+                    {
+                      "id": 41,
+                      "name": "Lily",
+                      "image": "no-image.png",
+                      "kind": "Dog",
+                      "weight": 6.3,
+                      "age": 9,
+                      "breed": "Golden Retriever",
+                      "location": "Briannebury",
+                      "description": "In ea dignissimos laudantium in voluptates officia quos consequuntur alias unde.",
+                      "active": 1,
+                      "status": 1,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-12-10T20:47:11.000000Z"
+                    },
+                    {
+                      "id": 42,
+                      "name": "Roxy",
+                      "image": "no-image.png",
+                      "kind": "Dog",
+                      "weight": 4.2,
+                      "age": 9,
+                      "breed": "Golden Retriever",
+                      "location": "Wunschfurt",
+                      "description": "Esse saepe provident fugit illum neque quam perspiciatis.",
+                      "active": 1,
+                      "status": 0,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-10-23T16:31:08.000000Z"
+                    },
+                    {
+                      "id": 43,
+                      "name": "Zeus",
+                      "image": "no-image.png",
+                      "kind": "Dog",
+                      "weight": 0.2,
+                      "age": 6,
+                      "breed": "Rottweiler",
+                      "location": "Blandatown",
+                      "description": "Voluptatum soluta fuga minima consequatur natus.",
+                      "active": 1,
+                      "status": 1,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-12-10T22:19:16.000000Z"
+                    },
+                    {
+                      "id": 44,
+                      "name": "Zeus",
+                      "image": "no-image.png",
+                      "kind": "Bird",
+                      "weight": 5.4,
+                      "age": 0,
+                      "breed": "Scarlet Macaw",
+                      "location": "West Mosesbury",
+                      "description": "Commodi autem quod dolorem fuga molestiae a quis.",
+                      "active": 1,
+                      "status": 1,
+                      "created_at": "2025-10-23T16:31:08.000000Z",
+                      "updated_at": "2025-12-10T20:36:26.000000Z"
+                    },
+                    {
+                      "id": 46,
+                      "name": "Haru",
+                      "image": "no-image.png",
+                      "kind": "Cat",
+                      "weight": 1,
+                      "age": 3,
+                      "breed": "mestizo",
+                      "location": "manizales",
+                      "description": "Es my¿uy tierno.",
+                      "active": 1,
+                      "status": 1,
+                      "created_at": "2025-12-04T03:26:12.000000Z",
+                      "updated_at": "2025-12-10T20:35:43.000000Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/pets/show/10": {
+      "get": {
+        "summary": "show pet",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "error ": "Pet not found!"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/pets/store": {
+      "post": {
+        "summary": "add pet",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/pets/delete/12": {
+      "delete": {
+        "summary": "delete pet",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/pets/edit/12": {
+      "put": {
+        "summary": "edit pet ",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "message": "Error in the request",
+                  "errors": {
+                    "name": [
+                      "The name field is required."
+                    ],
+                    "kind": [
+                      "The kind field is required."
+                    ],
+                    "weight": [
+                      "The weight field is required."
+                    ],
+                    "age": [
+                      "The age field is required."
+                    ],
+                    "breed": [
+                      "The breed field is required."
+                    ],
+                    "location": [
+                      "The location field is required."
+                    ],
+                    "description": [
+                      "The description field is required."
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "securitySchemes": {}
+  },
+  "servers": [],
+  "security": []
+}

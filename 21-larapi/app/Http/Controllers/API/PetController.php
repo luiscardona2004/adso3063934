@@ -20,24 +20,38 @@ class PetController extends Controller
 
     // CREAR
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name'        => 'required|string',
-            'kind'        => 'required|string',
-            'weight'      => 'required|numeric',
-            'age'         => 'required|numeric',
-            'breed'       => 'required|string',
-            'location'    => 'required|string',
-            'description' => 'required|string',
-        ]);
+{
+    $validated = $request->validate([
+        'name'        => 'required|string',
+        'kind'        => 'required|string',
+        'weight'      => 'required|numeric',
+        'age'         => 'required|numeric',
+        'breed'       => 'required|string',
+        'location'    => 'required|string',
+        'description' => 'required|string',
+        'image'       => 'required|image|mimes:jpg,jpeg,png|max:2048'
+    ]);
 
-        $pet = Pet::create($validated);
+    // Guardar imagen en storage/app/public/pets
+    $imagePath = $request->file('image')->store('pets', 'public');
 
-        return response()->json([
-            'message' => 'Pet created successfully 🐾',
-            'data' => $pet
-        ], 201);
-    }
+    $pet = Pet::create([
+        'name'        => $validated['name'],
+        'kind'        => $validated['kind'],
+        'weight'      => $validated['weight'],
+        'age'         => $validated['age'],
+        'breed'       => $validated['breed'],
+        'location'    => $validated['location'],
+        'description' => $validated['description'],
+        'image'       => $imagePath
+    ]);
+
+    return response()->json([
+        'message' => 'Pet created successfully 🐾',
+        'data' => $pet
+    ], 201);
+}
+
 
     // MOSTRAR
     public function show($id)

@@ -52,34 +52,54 @@
             </a>
             <img src="images/add_pet.png" alt="add">
         </header>
-        <form action="">
+        <form id="addForm">
+
+            <label for="image">
+                <input type="file" name="image" accept="image/*">
+            </label>
             <label for="name">Name
                 <input type="text" name="name" placeholder="Firulais">
             </label>
             <label for="breed">Breed
-                <input type="text" name="Breed" placeholder="Cocker">
+                <input type="text" name="breed" placeholder="Cocker">
             </label>
-            <label for="kind">Kind
-                <input type="text" name="password" placeholder="Dog">
-            </label>
-            <label for="Weight">Weight
-                <input type="text" name="Weight" placeholder="14.5">
+           
+                <label for="kind" class="lkind">
+                    Kind
+                    <select name="kind" required class="inputSelect">
+                        <option value="">Select Kind</option>
+                        <option value="Dog">🐶 Dog</option>
+                        <option value="Cat">🐱 Cat</option>
+                        <option value="Other">🐾 Other</option>
+                    </select>
+                </label>
+            
+
+            <label for="weight">Weight
+                <input type="number" name="weight" placeholder="14.5">
             </label>
             <label for="age">Age
-                <input type="text" name="age" placeholder="10">
+                <input type="number" name="age" placeholder="10">
             </label>
             <label for="location">Location
                 <input type="text" name="location" placeholder="Bogota">
             </label>
             <label for="description">
                 Description
-                <textarea name="description" placeholder="Nice dog so charming lovely"></textarea>
+                <textarea name="description" placeholder="Nice dog so charming lovely" required></textarea>
             </label>
             <div class="actions">
-                <button type="button">Save</button>
+                <button type="submit">Save</button>
                 <a href="javascript:;" class="btnCancel">Cancel</a>
             </div>
         </form>
+
+
+
+        <!-- --------------------------------------- -->
+
+
+        <!-- --------------------------------------- -->
     </main>
 
     <main id="show">
@@ -91,34 +111,7 @@
         </header>
 
         <section class="pet-detail">
-            <img src="images/pet1.png" alt="Pet" class="pet-image">
 
-            <div class="card">
-                <div class="item">
-                    <span>Name:</span>
-                    <p>Benji</p>
-                </div>
-                <div class="item">
-                    <span>Breed:</span>
-                    <p>Cocker</p>
-                </div>
-                <div class="item">
-                    <span>Kind:</span>
-                    <p>Dog</p>
-                </div>
-                <div class="item">
-                    <span>Weight:</span>
-                    <p>14.5</p>
-                </div>
-                <div class="item">
-                    <span>Age:</span>
-                    <p>11</p>
-                </div>
-                <div class="item">
-                    <span>Location:</span>
-                    <p>Manizales</p>
-                </div>
-            </div>
         </section>
     </main>
 
@@ -134,7 +127,7 @@
 
             <img src="images/pet1.png" alt="Pet" class="pet-image-edit">
 
-            <form>
+            <form id="editForm">
                 <label>Name
                     <input type="text" name="name" value="Benji">
                 </label>
@@ -160,7 +153,7 @@
                 </label>
 
                 <div class="actions">
-                    <button type="button">Save</button>
+                    <button type="submit">Save</button>
                     <a href="javascript:;" class="btnCancel">Cancel</a>
                 </div>
             </form>

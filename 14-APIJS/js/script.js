@@ -16,10 +16,12 @@ if (localStorage.getItem('currentView') != null) {
 // BUTTONS
 // ===============================================
 
-const btnLogout  = document.querySelector('.btnLogout')
-const btnAdd     = document.querySelector('.btnAdd')
-const btnBacks   = document.querySelectorAll('.btnBack')
+const btnLogout = document.querySelector('.btnLogout')
+const btnAdd = document.querySelector('.btnAdd')
+const addForm = document.querySelector("#addForm")
+const btnBacks = document.querySelectorAll('.btnBack')
 const btnCancels = document.querySelectorAll('.btnCancel')
+const editForm = document.getElementById("editForm")
 
 // ===============================================
 // LOGIN
@@ -64,7 +66,7 @@ LoginForm.addEventListener('submit', async function (e) {
 
             Swal.fire({
                 title: "Error!",
-                text: "Invalid credentials",
+                text: data.message, // 👈 AQUÍ ESTÁ LA CLAVE
                 icon: "error"
             })
         }
@@ -94,6 +96,47 @@ btnLogout.addEventListener('click', async () => {
     localStorage.setItem('currentView', 0)
     showView()
 })
+
+
+// ===============================================
+// SAVE
+// ===============================================
+
+editForm.addEventListener("submit", async function (e) {
+    e.preventDefault()
+
+    const id = localStorage.getItem("editPetId")
+    const token = localStorage.getItem("authToken")
+
+    const formData = {
+        name: this.name.value,
+        breed: this.breed.value,
+        kind: this.kind.value,
+        weight: this.weight.value,
+        age: this.age.value,
+        location: this.location.value
+    }
+
+    const response = await fetch(`http://127.0.0.1:8000/api/pets/edit/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+    })
+
+    if (response.ok) {
+
+        Swal.fire("Updated!", "Pet updated successfully", "success")
+
+        localStorage.setItem("currentView", 1)
+        showView()
+        getPets()
+    }
+})
+
 
 // ===============================================
 // NAVIGATION BUTTONS
@@ -129,13 +172,12 @@ function showView() {
         element.style.display = 'none'
     })
 
-    const current = localStorage.getItem('currentView')
+    const current = parseInt(localStorage.getItem('currentView'))
 
     views[current].classList.add('animateView')
     views[current].style.display = 'block'
 
-    // 🔥 Si estamos en Dashboard, cargar mascotas
-    if (current == 1 && localStorage.getItem('authToken')) {
+    if (current === 1 && localStorage.getItem('authToken')) {
         getPets()
     }
 }
@@ -146,42 +188,24 @@ function showView() {
 
 async function getPets() {
 
-    try {
+    const token = localStorage.getItem("authToken");
 
-        const token = localStorage.getItem('authToken')
 
-        const response = await fetch('http://127.0.0.1:8000/api/pets/list', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        })
-
-        const data = await response.json()
-
-        console.log("Respuesta completa:", data)
-
-        if (!response.ok) {
-            console.log("Error en respuesta")
-            return
+    const response = await fetch("http://127.0.0.1:8000/api/pets/list", {
+        headers: {
+            "Authorization": "Bearer " + token,
+            "Accept": "application/json"
         }
+    });
 
-        // 🔥 Detectar automáticamente si es array o viene dentro de objeto
-        if (Array.isArray(data)) {
-            renderPets(data)
-        } else if (Array.isArray(data.pets)) {
-            renderPets(data.pets)
-        } else if (Array.isArray(data.data)) {
-            renderPets(data.data)
-        } else {
-            console.log("No es un array:", data)
-        }
+    const result = await response.json();
 
-    } catch (error) {
-        console.error(error)
-    }
+    const pets = result.data; // 👈 AQUI ESTA LA CLAVE
+
+    renderPets(pets);
+
 }
+
 
 
 
@@ -191,25 +215,40 @@ async function getPets() {
 
 function renderPets(pets) {
 
-    const list = document.getElementById('petList')
-    list.innerHTML = ''
+    const petList = document.getElementById("petList");
+    petList.innerHTML = "";
+
+
 
     pets.forEach(pet => {
 
-        list.innerHTML += `
-            <div class="row">
-                <img src="${pet.image ?? 'images/default.png'}" alt="">
-                <div class="data">
-                    <h3>${pet.name}</h3>
+        console.log("Imagen guardada:", pet.image);
+
+        petList.innerHTML += `
+            <div class="pet-card">
+                <div class="pet-info">
+                    <img src="http://127.0.0.1:8000/storage/${pet.image}"
+                         onerror="this.src='images/pet1.png'">
+
+                    <div class="pet-text">
+                        <h3>${pet.name}</h3>
+                        <p>${pet.kind}</p>
+                    </div>
                 </div>
-                <nav class="actions">
-                    <a href="javascript:;" onclick="showPet(${pet.id})">👁</a>
-                    <a href="javascript:;" onclick="deletePet(${pet.id})">🗑</a>
-                </nav>
+
+                <div class="pet-actions">
+                    <button class="btnShow" onclick="showPet(${pet.id})"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FED671" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg></button>
+                    <button class="btnEdit" onclick="editPet(${pet.id})"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FED671" viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160,136,75.31,152.69,92,68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188,164,103.31,180.69,120Zm96-96L147.31,64l24-24L216,84.68Z"></path></svg></button>
+                    <button class="btnDelete" onclick="deletePet(${pet.id})"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FED671" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg></button>
+                </div>
             </div>
-        `
-    })
+        `;
+    });
 }
+
+
+
+
 
 // ===============================================
 // SHOW SINGLE PET
@@ -217,33 +256,133 @@ function renderPets(pets) {
 
 async function showPet(id) {
 
-    try {
+    const token = localStorage.getItem('authToken')
 
-        const token = localStorage.getItem('authToken')
-
-        const response = await fetch(`http://127.0.0.1:8000/api/pets/show/${id}`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        })
-
-        const pet = await response.json()
-
-        if (response.ok) {
-
-            console.log(pet)
-
-            // Aquí puedes llenar la vista de detalle
-            localStorage.setItem('currentView', 3)
-            showView()
+    const response = await fetch(`http://127.0.0.1:8000/api/pets/show/${id}`, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
         }
+    })
 
-    } catch (error) {
-        console.error(error)
+    const result = await response.json()
+    const pet = result.data
+
+    if (response.ok) {
+
+        const detailSection = document.querySelector(".pet-detail")
+
+        detailSection.innerHTML = `
+            <img src="http://127.0.0.1:8000/storage/${pet.image}" 
+                 onerror="this.src='images/pet1.png'" 
+                 class="pet-image">
+
+            <div class="card">
+                <div class="item"><span>Name:</span><p>${pet.name}</p></div>
+                <div class="item"><span>Breed:</span><p>${pet.breed}</p></div>
+                <div class="item"><span>Kind:</span><p>${pet.kind}</p></div>
+                <div class="item"><span>Weight:</span><p>${pet.weight}</p></div>
+                <div class="item"><span>Age:</span><p>${pet.age}</p></div>
+                <div class="item"><span>Location:</span><p>${pet.location}</p></div>
+                <div class="item"><span>Description:</span><p>${pet.description}</p></div>
+            </div>
+        `
+
+        localStorage.setItem('currentView', 3)
+        showView()
     }
 }
+
+
+// ==============================================
+// ADD PET
+// ==============================================
+
+addForm.addEventListener("submit", async function (e) {
+    e.preventDefault()
+
+    const token = localStorage.getItem("authToken")
+
+    const formData = new FormData(this) // 👈 IMPORTANTE
+
+    const response = await fetch("http://127.0.0.1:8000/api/pets/store", {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/json"
+        },
+        body: formData
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+        Swal.fire("Error", "Check your fields", "error")
+        return
+    }
+
+    Swal.fire({
+        title: "Success!",
+        text: `${data.data.name} has been created successfully 🐾`,
+        icon: "success",
+        confirmButtonText: "Go to Dashboard"
+    }).then(() => {
+
+        addForm.reset()
+
+        localStorage.setItem("currentView", 1)
+
+        showView() // 🔥 ahora sí funcionará bien
+    })
+
+})
+
+
+// ==============================================
+// EDIT PET
+// ==============================================
+
+async function editPet(id) {
+
+    const token = localStorage.getItem('authToken')
+
+    const response = await fetch(`http://127.0.0.1:8000/api/pets/show/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json'
+        }
+    })
+
+    const result = await response.json()
+    const pet = result.data
+
+    if (response.ok) {
+
+        // Guardamos ID temporalmente
+        localStorage.setItem("editPetId", id)
+
+        // Llenar formulario
+        const form = document.getElementById("editForm")
+
+        form.name.value = pet.name
+        form.breed.value = pet.breed
+        form.kind.value = pet.kind
+        form.weight.value = pet.weight
+        form.age.value = pet.age
+        form.location.value = pet.location
+
+        document.querySelector(".pet-image-edit").src =
+            `http://127.0.0.1:8000/storage/${pet.image}`
+
+        localStorage.setItem('currentView', 4)
+        showView()
+    }
+}
+
+
+
+
+
 
 // ===============================================
 // DELETE PET
@@ -251,30 +390,31 @@ async function showPet(id) {
 
 async function deletePet(id) {
 
-    try {
+    const confirm = await Swal.fire({
+        title: "Are you sure?",
+        text: "This pet will be deleted",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete"
+    })
 
-        const token = localStorage.getItem('authToken')
+    if (!confirm.isConfirmed) return
 
-        const response = await fetch(`http://127.0.0.1:8000/api/pets/delete/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        })
+    const token = localStorage.getItem('authToken')
 
-        if (response.ok) {
-
-            Swal.fire(
-                "Deleted!",
-                "Pet removed successfully",
-                "success"
-            )
-
-            getPets()
+    const response = await fetch(`http://127.0.0.1:8000/api/pets/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
         }
+    })
 
-    } catch (error) {
-        console.error(error)
+    if (response.ok) {
+
+        Swal.fire("Deleted!", "Pet removed successfully", "success")
+
+        getPets()
     }
 }
+

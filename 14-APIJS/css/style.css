@@ -144,6 +144,94 @@ body {
 
             }
 
+            .list {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+                align-items: center;
+            }
+
+            .pet-card {
+                display: flex;
+                align-items: center;
+                width: 90%;
+                background: #fff;
+                padding: 15px 20px;
+                border-radius: 12px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+
+            }
+
+            .pet-info {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                flex: 1;
+            }
+
+            .pet-card img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+
+            .pet-text {
+                max-width: 80px;
+                min-width: 80px;
+                /* puedes ajustar */
+                overflow: hidden;
+            }
+
+            .pet-text h3 {
+                margin: 0;
+                white-space: nowrap;
+                /* no salta línea */
+                overflow: hidden;
+                /* oculta lo que sobra */
+                text-overflow: ellipsis;
+                /* pone ... */
+            }
+
+            .pet-text p {
+                margin: 3px 0;
+                color: #666;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .pet-actions {
+                display: flex;
+
+                gap: 5px;
+                flex-shrink: 0;
+
+            }
+
+            .pet-actions button {
+                border: none;
+                padding: 4px 8px;
+                border-radius: 8px;
+                cursor: pointer;
+                color: white;
+            }
+
+            .btnShow {
+                background: #D98105;
+
+            }
+
+            .btnEdit {
+                background: #D98105;
+            }
+
+            .btnDelete {
+                background: #D98105;
+            }
+
+
             .petlist {
                 text-align: center;
             }
@@ -241,7 +329,7 @@ body {
                         font-family: 'SF Pro', sans-serif;
                         font-weight: 600;
                         font-style: italic;
-                        border-radius: 4px;
+                        border-radius: 10px;
                         height: 30px;
                         width: 250px;
                         outline: none;
@@ -253,11 +341,56 @@ body {
 
                     }
 
+                    .lkind{
+                        width: 250px;
+                    }
+
+                     .inputSelect {
+                    width: 250px;
+                    padding: 12px 14px;
+                    border-radius: 10px;
+                    border: 2px solid rgba(217, 129, 5, 0.15);
+                    background: #fff;
+                    font-size: 14px;
+                    color: #d98105a1;
+                    outline: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                /* Hover */
+                .inputSelect:hover {
+                    border-color: #D98105;
+                }
+
+                /* Focus */
+                .inputSelect:focus {
+                    border-color: #D98105;
+                    box-shadow: 0 0 0 3px rgba(217, 129, 5, 0.15);
+                }
+
+                /* Flechita personalizada */
+                .form-group {
+                    position: relative;
+                }
+
+                .form-group::after {
+                    content: "▼";
+                    position: absolute;
+                    right: 15px;
+                    top: 38px;
+                    font-size: 12px;
+                    color: #D98105;
+                    pointer-events: none;
+                }
+
                     textarea {
                         height: 70px;
                         text-indent: 0;
                     }
                 }
+
+               
 
                 div.actions {
                     display: flex;
@@ -497,6 +630,7 @@ body {
 main.animateView {
     animation: animateView 0.4s ease-in 1;
 }
+
 @Keyframes animateView {
     0% {
         opacity: 0;

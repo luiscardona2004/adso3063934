@@ -94,7 +94,7 @@ class PetController extends Controller
         $pet->update($validated);
 
         return response()->json([
-            'message' => 'Pet updated successfully ✏️',
+            'message' => 'Pet updated successfully',
             'data' => $pet
         ], 200);
     }

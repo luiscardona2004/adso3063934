@@ -66,7 +66,7 @@ LoginForm.addEventListener('submit', async function (e) {
 
             Swal.fire({
                 title: "Error!",
-                text: data.message, // 👈 AQUÍ ESTÁ LA CLAVE
+                text: data.message, 
                 icon: "error"
             })
         }
@@ -200,7 +200,7 @@ async function getPets() {
 
     const result = await response.json();
 
-    const pets = result.data; // 👈 AQUI ESTA LA CLAVE
+    const pets = result.data; 
 
     renderPets(pets);
 
@@ -228,7 +228,7 @@ function renderPets(pets) {
             <div class="pet-card">
                 <div class="pet-info">
                     <img src="http://127.0.0.1:8000/storage/${pet.image}"
-                         onerror="this.src='images/pet1.png'">
+                         onerror="this.src='defect_image.png'">
 
                     <div class="pet-text">
                         <h3>${pet.name}</h3>

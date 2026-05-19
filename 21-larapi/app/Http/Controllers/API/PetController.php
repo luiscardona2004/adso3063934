@@ -20,37 +20,43 @@ class PetController extends Controller
 
     // CREAR
     public function store(Request $request)
-{
-    $validated = $request->validate([
-        'name'        => 'required|string',
-        'kind'        => 'required|string',
-        'weight'      => 'required|numeric',
-        'age'         => 'required|numeric',
-        'breed'       => 'required|string',
-        'location'    => 'required|string',
-        'description' => 'required|string',
-        'image'       => 'required|image|mimes:jpg,jpeg,png|max:2048'
-    ]);
+    {
+        $validated = $request->validate([
+            'name'        => 'required|string',
+            'kind'        => 'required|string',
+            'weight'      => 'required|numeric',
+            'age'         => 'required|numeric',
+            'breed'       => 'required|string',
+            'location'    => 'required|string',
+            'description' => 'required|string',
+            'image'       => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+        ]);
 
-    // Guardar imagen en storage/app/public/pets
-    $imagePath = $request->file('image')->store('pets', 'public');
+        if ($request->hasFile('image')) {
 
-    $pet = Pet::create([
-        'name'        => $validated['name'],
-        'kind'        => $validated['kind'],
-        'weight'      => $validated['weight'],
-        'age'         => $validated['age'],
-        'breed'       => $validated['breed'],
-        'location'    => $validated['location'],
-        'description' => $validated['description'],
-        'image'       => $imagePath
-    ]);
+            $image = $request->file('image')->store('pets', 'public');
+        } else {
 
-    return response()->json([
-        'message' => 'Pet created successfully 🐾',
-        'data' => $pet
-    ], 201);
-}
+            $image = 'no-image.png'; // imagen por defecto
+
+        }
+
+        $pet = Pet::create([
+            'name'        => $validated['name'],
+            'kind'        => $validated['kind'],
+            'weight'      => $validated['weight'],
+            'age'         => $validated['age'],
+            'breed'       => $validated['breed'],
+            'location'    => $validated['location'],
+            'description' => $validated['description'],
+            'image'       => $image
+        ]);
+
+        return response()->json([
+            'message' => 'Pet created successfully 🐾',
+            'data' => $pet
+        ], 201);
+    }
 
 
     // MOSTRAR
@@ -60,12 +66,12 @@ class PetController extends Controller
 
         if (!$pet) {
             return response()->json([
-                'message' => 'Pet not found ❌'
+                'message' => 'Pet not found '
             ], 404);
         }
 
         return response()->json([
-            'message' => 'Pet retrieved successfully 🐕',
+            'message' => 'Pet retrieved successfully ',
             'data' => $pet
         ], 200);
     }
@@ -77,7 +83,7 @@ class PetController extends Controller
 
         if (!$pet) {
             return response()->json([
-                'message' => 'Pet not found ❌'
+                'message' => 'Pet not found '
             ], 404);
         }
 
@@ -106,14 +112,14 @@ class PetController extends Controller
 
         if (!$pet) {
             return response()->json([
-                'message' => 'Pet not found ❌'
+                'message' => 'Pet not found '
             ], 404);
         }
 
         $pet->delete();
 
         return response()->json([
-            'message' => 'Pet deleted successfully 🗑️'
+            'message' => 'Pet deleted successfully '
         ], 200);
     }
 }

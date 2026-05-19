@@ -31,6 +31,16 @@ html {
     border-radius: 50%;
    
   }
+
+  img.img_react {
+    width: 75%;
+    height: 75%;
+
+    object-fit: contain;
+
+    display: block;
+   
+  }
 /* - - - - - - - - - - - - - */
 /* G E N E R A L */
 /* - - - - - - - - - - - - - */
@@ -116,6 +126,27 @@ main {
             height: 200px;
             width: 200px;
         }
+        figure.figure_react{
+             width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+    border: 8px solid #990a05;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background: #111;
+    margin: auto;
+
+    box-shadow:
+        0 0 20px rgba(153, 10, 5, 0.5),
+        0 0 40px rgba(153, 10, 5, 0.2);
+        }
+
         h3 {
             font-size: 1.6rem;
             font-weight: 400;
@@ -286,6 +317,40 @@ menu.opciones_jquery{
     }
 }
 
+menu.opcionesreact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.6rem;
+    a:is(:link, :visited) {
+        background-color: #fff9;
+        border-radius: 25px;
+        color: #220038;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        width: 220px;
+        transition: all 0.2s ease-in;
+        span {
+           background-color: rgba(230, 3, 3, 0.938); 
+           border: 2px solid #fff9;
+           border-radius: 50%;
+           color: rgba(250, 250, 250, 0.6);
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 40px;
+           transition: all 0.4s ease-in;
+           width: 40px;
+        }
+        &:hover span {
+           border-radius: 50px;
+           width: 60px;
+        }
+    }
+}
+
 /* - - - - - - - - - - - - - */
 /* M A I N   M E N U */
 /* - - - - - - - - - - - - - */
@@ -319,5 +384,91 @@ body.jquery{
 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='167' height='167' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23007ed4' fill-opacity='0.65'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.65'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
     background-attachment: fixed;
 background-size: cover;
+}
+
+/* - - - - - - - - - - - - - */
+/* REACT */
+/* - - - - - - - - - - - - - */
+
+body.react{
+     background-color: #0d0d0e;
+  background-image:
+    linear-gradient(135deg, rgba(211, 47, 47, 0.18) 0%, transparent 18%),
+    linear-gradient(315deg, rgba(211, 47, 47, 0.22) 0%, transparent 22%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.035) 0px,
+      rgba(255, 255, 255, 0.035) 2px,
+      transparent 2px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 2px,
+      transparent 2px,
+      transparent 8px
+    ),
+    radial-gradient(circle at top left, rgba(211, 47, 47, 0.25), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(255, 193, 7, 0.12), transparent 30%);
+  background-size: cover, cover, 18px 18px, 18px 18px, cover, cover;
+  background-attachment: fixed;
+
+}
+.cars-title{
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+
+    /* efecto metal */
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #d9d9d9 25%,
+        #8f8f8f 50%,
+        #ffffff 75%,
+        #5e5e5e 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* brillo y profundidad */
+    text-shadow:
+        0 0 5px rgba(255,255,255,0.4),
+        0 0 15px rgba(211, 47, 47, 0.4),
+        0 4px 10px rgba(0,0,0,0.8);
+
+    position: relative;
+    display: inline-block;
+}
+
+/* linea roja deportiva */
+.cars-title::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+
+    width: 80%;
+    height: 4px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #d32f2f,
+        #ff3d3d,
+        #d32f2f,
+        transparent
+    );
+
+    box-shadow:
+        0 0 10px rgba(211,47,47,.8),
+        0 0 20px rgba(211,47,47,.5);
 }
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\API\Petcontroller;
+use App\Http\Controllers\API\PetController;
 use App\Http\Controllers\API\AuthController;
 
 
@@ -12,7 +12,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
 
     // Endpoint: http://127.0.0.1:8000/api/logout
-     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 
     // Endpoint: http://127.0.0.1:8000/api/pets/list
 

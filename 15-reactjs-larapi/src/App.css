@@ -127,6 +127,7 @@ body {
                 padding-top: 4rem;
                 display: flex;
                 justify-content: space-around;
+                gap: 2rem;
 
                 a:link,
                 a:visited {
@@ -138,13 +139,39 @@ body {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    border-radius: 10px 2px 10px 2px;
-                    width: 100px;
+                    border-radius: 43px 9px 43px 9px;
+                    width: 120px;
                     text-decoration: none;
-                    height: 22px;
+                    height: 2rem;
                     gap: 8px;
+                    transition: all 0.5s ease;
                 }
 
+                a:link:hover {
+                    transform: scale(1.05);
+                }
+
+
+
+            }
+
+            .btnLogout {
+                font-family: 'SF Pro', sans-serif;
+                font-weight: 600;
+                font-style: italic;
+                background: #FED671;
+                font-size: 20px;
+                border: 1px solid #9B4300;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+                color: #4B330D;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px 10px 10px 10px;
+                width: 100px;
+                text-decoration: none;
+                height: 25px;
+                gap: 8px;
             }
 
             .list {
@@ -159,7 +186,7 @@ body {
                 display: flex;
                 align-items: center;
                 width: 90%;
-                background: #9b4300cb;
+                background: #411f00d5;
                 padding: 15px 20px;
                 border: 2px solid #FED671;
                 border-radius: 12px;
@@ -216,37 +243,67 @@ body {
 
             }
 
-            .pet-actions button {
-                border: none;
-                padding: 4px 8px;
-                border-radius: 8px;
-                cursor: pointer;
-                color: white;
-            }
 
             .btnShow {
-                background: #D98105;
-                padding: 5px 5px;
+                background: #FED671;
+                padding: 5px 0.4rem;
                 border-radius: 10px;
                 text-decoration: none;
                 box-shadow: 0 2px 5px #4b3415;
+                transition: all 0.3s ease;
+            }
 
+            .btnShow:hover {
+                transform: scale(1.1);
             }
 
             .btnEdit {
-                background: #D98105;
-                padding: 5px 5px;
+                background: #FED671;
+                padding: 5px 0.4rem;
                 border-radius: 10px;
                 text-decoration: none;
                 box-shadow: 0 2px 5px #4b3415;
+                transition: all 0.3s ease;
+            }
+
+            .btnEdit:hover {
+                transform: scale(1.1);
             }
 
             .btnDelete {
-                background: #D98105;
-                padding: 5px 5px;
+                cursor: pointer;
+                background: #FED671;
+                padding: 5px 0.4rem;
+                border: #411F00;
                 border-radius: 10px;
                 text-decoration: none;
                 box-shadow: 0 2px 5px #4b3415;
+                transition: all 0.3s ease;
+            }
+
+            .btnDelete:hover {
+                transform: scale(1.1);
+            }
+
+            .btnScroll {
+                background-color: #411F00;
+                border: 1px solid #D98105;
+                box-shadow: 0 2px 4px #411F00;
+                border-radius: 4rem;
+                padding: 0.2rem 1rem;
+            }
+
+            .petlist_title p{
+                text-align: center;
+                font-family: 'SF Pro';
+                font-weight: 900;
+                transform: scaleX(1.0);
+                 font-size: 40px;
+                font-style: italic;
+                -webkit-text-stroke: 1px #FED671;
+                color: #411F00;
+                text-shadow:0 5px 8px #422000;
+                z-index: -2;
             }
 
 
@@ -548,6 +605,29 @@ body {
                 color: #FED671;
                 font-size: 18px;
             }
+
+            .btnback2 {
+                padding: 0 25px;
+                background-color: #411F00;
+                cursor: pointer;
+                border-radius: 2px 20px 2px 20px;
+
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #D98105;
+                transition: 0.6s;
+
+                svg {
+                    width: 35px;
+                    size: 20px;
+                }
+
+            }
+
+            .btnback2 :hover {
+                transform: scale(1.05);
+
+            }
         }
 
         &#edit {
@@ -739,6 +819,7 @@ body {
             position: fixed;
             width: 402px;
             top: 0;
+            gap: 2rem;
 
             a:link,
             a:visited {

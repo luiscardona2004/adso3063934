@@ -116,9 +116,9 @@ function Add() {
 
       <header>
 
-        <button className="btnBack" onClick={() => navigate(-1)}>
-          <img src={btnBack} alt="back" />
-        </button>
+        <img className="btnBack"
+          onClick={() => navigate("/dashboard")}
+          src={btnBack} alt="Back" />
 
         <img src={addPet} alt="add pet" />
 

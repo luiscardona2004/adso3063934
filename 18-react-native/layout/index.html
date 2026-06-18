@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="loading">
+
+    <div id="loader">
+        <img src="img/logo_cars.PNG" class="loader-logo">
+
+        <div class="loader-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <img src="img/fondo_mc.jpg" class="loader-car">
+
+        <h1 class="loading-text">LOADING...</h1>
+    </div>
+
+    <div id="content">
+        <main class="main_index">
+
+            <header class="header">
+                <img src="img/logo_cars.PNG" alt="Logo" class="logo-icon">
+                <img src="img/cars_titulo.png" alt="Cars" class="logo-text">
+            </header>
+
+
+            <section class="welcome">
+                <img src="img/WELCOME TO THE WORLD OF CARS.png " alt="welcome" class="welcome_image">
+                <div class="line"></div>
+            </section>
+
+            <section class="slider">
+                <button class="arrow left">&#10094;</button>
+
+                <div class="card-image">
+                    <img src="img/img_carrera.png" alt="Car race" id="slideImage">
+                </div>
+
+                <button class="arrow right">&#10095;</button>
+            </section>
+
+            <div class="dots slider-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+            <section class="buttons">
+                <a href="login.html" class="btn btn_login_index">LOGIN</a>
+                <a href="register.html" class="btn btn_register">REGISTER</a>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

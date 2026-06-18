@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Cars App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <main class="main_home">
+
+        <header class="header">
+            <img src="img/logo_cars.PNG" alt="Logo" class="logo-icon">
+            <img src="img/cars_titulo.png" alt="Cars" class="logo-text">
+            <a href="index.html" class="profile-link">
+                <img src="img/menu.png" alt="Menu icon" class="menu-icon">
+            </a>
+        </header>
+
+        <div class="home_content page_content">
+
+            <!-- Avatar + nombre -->
+            <section class="profile_hero">
+                <div class="profile_avatar">
+                    <!-- Cambia esta imagen por la foto del usuario -->
+                    <img src="img/mcqueen.jpg" alt="Avatar">
+                </div>
+                <h1 class="profile_name">LUIS</h1>
+                <p class="profile_tag">@luis_racer · Since 2024</p>
+
+                <div class="profile_stats_row">
+                    <div class="profile_stat">
+                        <span class="stat_number">12</span>
+                        <span class="stat_label">FAVORITES</span>
+                    </div>
+                    <div class="profile_stat_divider"></div>
+                    <div class="profile_stat">
+                        <span class="stat_number">3</span>
+                        <span class="stat_label">TEAMS</span>
+                    </div>
+                    <div class="profile_stat_divider"></div>
+                    <div class="profile_stat">
+                        <span class="stat_number">95</span>
+                        <span class="stat_label">POINTS</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Favoritos rápidos -->
+            <section class="home_section">
+                <div class="section_top">
+                    <h2>MY FAVORITES</h2>
+                    <a href="#">VIEW ALL</a>
+                </div>
+                <div class="characters_grid">
+                    <article class="character_card">
+                        <img src="img/mcqueen.jpg" alt="">
+                        <span>MC QUEEN</span>
+                    </article>
+                    <article class="character_card">
+                        <img src="img/doc.jpg" alt="">
+                        <span>DOC HUDSON</span>
+                    </article>
+                    <!-- PLACEHOLDER -->
+                    <article class="character_card char_card_placeholder">
+                        <span style="font-size:1.5rem; color:#f0a000;">+</span>
+                        <span>ADD MORE</span>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Opciones de cuenta -->
+            <section class="home_section">
+                <h2>ACCOUNT</h2>
+                <div class="profile_menu">
+
+                    <a href="#" class="profile_menu_item">
+                        <span class="pmenu_icon">❤</span>
+                        <span class="pmenu_label">MY FAVORITES</span>
+                        <span class="pmenu_arrow">›</span>
+                    </a>
+
+                    <a href="#" class="profile_menu_item">
+                        <span class="pmenu_icon">⚙</span>
+                        <span class="pmenu_label">SETTINGS</span>
+                        <span class="pmenu_arrow">›</span>
+                    </a>
+
+                    <a href="#" class="profile_menu_item">
+                        <span class="pmenu_icon">🏆</span>
+                        <span class="pmenu_label">ACHIEVEMENTS</span>
+                        <span class="pmenu_arrow">›</span>
+                    </a>
+
+                    <a href="#" class="profile_menu_item">
+                        <span class="pmenu_icon">🔔</span>
+                        <span class="pmenu_label">NOTIFICATIONS</span>
+                        <span class="pmenu_arrow">›</span>
+                    </a>
+
+                    <!-- Separador -->
+                    <div class="pmenu_separator"></div>
+
+                    <a href="index.html" class="profile_menu_item profile_menu_item--danger">
+                        <span class="pmenu_icon">⏻</span>
+                        <span class="pmenu_label">SIGN OUT</span>
+                        <span class="pmenu_arrow">›</span>
+                    </a>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- NAV -->
+        <nav class="bottom_nav">
+            <a href="home.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"></path>
+                </svg>
+                <p>HOME</p>
+            </a>
+            <a href="characters.html">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="32" height="32">
+                    <style>
+                        path,
+                        rect,
+                        ellipse,
+                        circle {
+                            stroke: #A51210;
+                            stroke-width: 6;
+                            fill: none;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                        }
+
+                        .pupil {
+                            fill: #A51210;
+                            stroke: none;
+                        }
+                    </style>
+
+                    <path
+                        d="M240,112H230L202,50A16,16,0,0,0,187,40H69A16,16,0,0,0,54,50L26,112H16a8,8,0,0,0,0,16h8v72a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V184h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V128h8a8,8,0,0,0,0-16Z" />
+
+                    <path d="M69,52H187l21,48H48Z" />
+
+                    <circle cx="95" cy="76" r="14" />
+                    <circle cx="95" cy="76" r="6" class="pupil" />
+
+                    <circle cx="161" cy="76" r="14" />
+                    <circle cx="161" cy="76" r="6" class="pupil" />
+
+                    <rect x="40" y="184" width="24" height="24" rx="4" />
+                    <rect x="192" y="184" width="24" height="24" rx="4" />
+
+                    <path d="M32,160 H224 V176 H32 Z" rx="6" />
+
+                    <path d="M70,130 Q128,185 186,130" stroke-width="10" />
+
+                    <circle cx="52" cy="136" r="14" />
+                    <circle cx="204" cy="136" r="14" />
+                </svg>
+                <p>CHARACTERS</p>
+            </a>
+            <a href="teams.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M42.76,50A8,8,0,0,0,40,56V224a8,8,0,0,0,16,0V179.77c26.79-21.16,49.87-9.75,76.45,3.41,16.4,8.11,34.06,16.85,53,16.85,13.93,0,28.54-4.75,43.82-18a8,8,0,0,0,2.76-6V56A8,8,0,0,0,218.76,50c-28,24.23-51.72,12.49-79.21-1.12C111.07,34.76,78.78,18.79,42.76,50ZM216,172.25c-26.79,21.16-49.87,9.74-76.45-3.41-25-12.35-52.81-26.13-83.55-8.4V59.79c26.79-21.16,49.87-9.75,76.45,3.4,25,12.35,52.82,26.13,83.55,8.4Z"></path>
+                </svg>
+                <p>TEAMS</p>
+            </a>
+            <a href="profile.html" class="active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"></path>
+                </svg>
+                <p>PROFILE</p>
+            </a>
+        </nav>
+
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
